@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{name}} Post
+{% endblock title %}
+
+
+{% block content %}
+<div class="container-sm">   
+    <form action='' method='post' class='col-md-5'>
+        {{form.csrf_token}}
+        {{form.title.label(class='form-control-label')}} {{form.title(class='form-control')}}
+        {{form.body.label(class='form-control-label')}} {{form.body(class='form-control')}}
+        <br>
+        <input type='submit' value= {{name}} class='btn btn-info'>
+    </form>
+</div>
+{% endblock content %}

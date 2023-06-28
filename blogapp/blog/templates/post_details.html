@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Post Details
+{% endblock title %}
+
+{% block content %}
+<div class="container-sm">  
+      <div class="card text-bg-dark mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.body}}</p>
+          
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>{{post.author.username}}</strong></li>
+            <li class="list-group-item">{{post.date.strftime('%Y-%m-%d')}}</li>
+          </ul>
+        </div>
+      </div>
+      {% if current_user == post.author %}
+        <a href={{url_for('delete_post', post_id=post.id)}} class='btn btn-danger'>Delete Post</a>
+        <a href={{url_for('update_post', post_id=post.id)}} class='btn btn-info'>Update Post</a>
+                
+      {% endif %}
+</div>
+{% endblock content %}
+

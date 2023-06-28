@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Registeration
+{% endblock title %}
+
+{% block content %}
+
+<div class="mb-3" style="border: 1px;">    
+    {% include 'inc/register_form_errors.html' %}
+    <form action='' method='post' class='col-md-5'>
+        {{form.csrf_token}}
+        {{form.username.label(class='form-control-label')}} {{form.username(class='form-control')}}
+        {{form.password.label(class='form-control-label')}} {{form.password(class='form-control')}}
+        {{form.remember}}   {{form.remember.label(class='form-control-label')}} 
+        <br>
+        <input type='submit' value='Login' class='btn btn-info'>
+
+    </form>
+</div>
+{% endblock content %}
+

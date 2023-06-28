@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Profile
+{% endblock title %}
+
+
+{% block content %}
+  
+<div class="container-sm">
+    <div class="mb-3" style="border: 1px;">   
+        <h3>{{current_user.username}}</h3>    
+        <p>{{current_user.email}}</p><hr> 
+        {% include 'inc/register_form_errors.html' %}
+        <form action='' method='post' class='col-md-5'>
+            {{form.csrf_token}}
+            {{form.username.label(class='form-control-label')}} {{form.username(class='form-control')}}
+            {{form.email.label(class='form-control-label')}} {{form.email(class='form-control')}}
+            <br>
+            <input type='submit' value='Edit' class='btn btn-primary'>
+        </form>
+        <hr>
+        <a href={{url_for('posts', user_id=current_user.id)}} class='btn btn-info'>View Posts</a> <a href={{url_for('create_post')}} class='btn btn-info'>Create Post</a>
+    </div>      
+</div>
+{% endblock content %}
+
